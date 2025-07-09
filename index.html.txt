@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MGT Chatbot</title>
+  <style>
+    body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+    #chatbox { background: white; border-radius: 10px; padding: 10px; height: 400px; overflow-y: auto; }
+    #userInput { width: 80%; padding: 10px; }
+    #sendBtn { padding: 10px; }
+  </style>
+</head>
+<body>
+  <h2>🤖 MGT Learning Assistant</h2>
+  <div id="chatbox"><b>Bot:</b> Hi! Ask me anything about MGT courses!</div><br>
+  <input type="text" id="userInput" placeholder="Type here..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      let input = document.getElementById("userInput").value;
+      if (!input) return;
+      let chat = document.getElementById("chatbox");
+      chat.innerHTML += `<br><b>You:</b> ${input}`;
+      chat.scrollTop = chat.scrollHeight;
+
+      let reply = getBotReply(input.toLowerCase());
+      chat.innerHTML += `<br><b>Bot:</b> ${reply}`;
+      document.getElementById("userInput").value = "";
+    }
+
+    function getBotReply(msg) {
+      if (msg.includes("courses")) return "We offer 13 free courses at dealsaid.org!";
+      if (msg.includes("math")) return "We help with math from primary to college level!";
+      if (msg.includes("contact")) return "Reach out at dealsaid54@gmail.com.";
+      return "I'm not sure about that. Ask about courses, math, or contact info!";
+    }
+  </script>
+</body>
+</html>
